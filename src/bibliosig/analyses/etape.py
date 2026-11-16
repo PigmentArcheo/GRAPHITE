@@ -72,9 +72,7 @@ def executer(
         ecrire_csv(tableau, dossier / f"{nom}.csv")
     ecrire_csv(parts.reset_index(), dossier / "parts_mots_cles.csv")
 
-    reseau, communautes, nombre_publications = communautes_coauteurs(
-        graphe, parametres["coauteurs"]
-    )
+    reseau, communautes, nombre_publications = communautes_coauteurs(graphe, parametres["coauteurs"])
     communaute_par_personne = {
         personne: rang for rang, communaute in enumerate(communautes) for personne in communaute
     }

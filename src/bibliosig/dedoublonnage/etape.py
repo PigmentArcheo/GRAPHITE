@@ -94,9 +94,7 @@ def description_oeuvres(
         description[oeuvre] = {
             "members": sorted(membres),
             "n": len(membres),
-            "portails": sorted(
-                {texte_avec_nan(portail_par_notice.get(membre, "")) for membre in membres}
-            ),
+            "portails": sorted({texte_avec_nan(portail_par_notice.get(membre, "")) for membre in membres}),
             "titre_repr": texte_avec_nan(titre_par_notice.get(membres[0], ""))[:longueur_titre],
         }
     return description

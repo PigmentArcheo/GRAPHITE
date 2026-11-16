@@ -24,7 +24,7 @@ pillow==12.3.0
 pyparsing==3.3.3
 defusedxml==0.7.1
 beautifulsoup4==4.15.0
-soupsieve==2.10
+soupsieve==4.1
 rdflib==7.6.0
 isodate==0.7.2
 PyYAML==6.0.3

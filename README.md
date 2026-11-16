@@ -1,6 +1,6 @@
 # GRAPHITE — chaîne bibliométrique sur les SIG en archéologie
 
-**In English.** GRAPHITE provides `bibliosig`, a Python package that builds a bibliography on the use
+GRAPHITE provides `bibliosig`, a Python package that builds a bibliography on the use
 of GIS (geographic information systems) in French archaeology. It harvests six
 French-facing platforms (HAL, OpenAlex, Persée, SUDOC, theses.fr, Frantiq) from pairs
 of concept sets, merges, filters, deduplicates and classifies the records (with

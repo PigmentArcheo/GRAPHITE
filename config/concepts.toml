@@ -1,0 +1,180 @@
+# Concepts des blocs A (archéologie) et B (géomatique et numérique).
+#
+# Un concept est un ensemble de termes français et anglais. La collecte croise
+# des couples de concepts A × B (10 × 10 = 100 couples) ; chaque notice garde
+# son couple dans la colonne AxB, sous la forme « libellé A × libellé B ».
+#
+# termes : ordre des requêtes HAL et OpenAlex, réunis par OU dans une
+#          seule requête par couple ;
+# termes_fr, termes_en : les mêmes termes, rangés par langue (le terme « site »
+#          vaut pour les deux langues, BIM aussi) ;
+# mots_sans_accents : mots français interrogés un à un sur SUDOC et Frantiq ;
+# mots_theses : mots français interrogés un à un sur theses.fr.
+
+[[bloc_a]]
+libelle = "archéologie"
+termes = ["archéologie", "archaeology", "archaeological", "archéologique"]
+termes_fr = ["archéologie", "archéologique"]
+termes_en = ["archaeology", "archaeological"]
+mots_sans_accents = ["archeologie", "archeologique"]
+mots_theses = ["archéologie", "archéologique"]
+
+[[bloc_a]]
+libelle = "périodes"
+termes = ["préhistoire", "prehistory", "protohistoire", "protohistory", "antiquité", "antiquity", "médiéval", "medieval", "paléolithique", "paleolithic"]
+termes_fr = ["préhistoire", "protohistoire", "antiquité", "médiéval", "paléolithique"]
+termes_en = ["prehistory", "protohistory", "antiquity", "medieval", "paleolithic"]
+mots_sans_accents = ["prehistoire", "protohistoire", "antiquite", "medieval", "paleolithique"]
+mots_theses = ["préhistoire", "protohistoire", "antiquité", "médiéval", "paléolithique"]
+
+[[bloc_a]]
+libelle = "patrimoine archéologique"
+termes = ["patrimoine archéologique", "archaeological heritage"]
+termes_fr = ["patrimoine archéologique"]
+termes_en = ["archaeological heritage"]
+mots_sans_accents = ["patrimoine archeologique"]
+mots_theses = ["patrimoine archéologique"]
+
+[[bloc_a]]
+libelle = "site"
+termes = ["site"]
+termes_fr = ["site"]
+termes_en = ["site"]
+mots_sans_accents = ["site"]
+mots_theses = ["site archéologique"]
+
+[[bloc_a]]
+libelle = "prospection"
+termes = ["prospection", "survey"]
+termes_fr = ["prospection"]
+termes_en = ["survey"]
+mots_sans_accents = ["prospection"]
+mots_theses = ["prospection"]
+
+[[bloc_a]]
+libelle = "fouille"
+termes = ["fouille", "excavation"]
+termes_fr = ["fouille"]
+termes_en = ["excavation"]
+mots_sans_accents = ["fouille"]
+mots_theses = ["fouille"]
+
+[[bloc_a]]
+libelle = "archéogéographie"
+termes = ["archéogéographie", "archaeogeography", "géohistoire", "geohistory"]
+termes_fr = ["archéogéographie", "géohistoire"]
+termes_en = ["archaeogeography", "geohistory"]
+mots_sans_accents = ["archeogeographie", "geohistoire"]
+mots_theses = ["archéogéographie", "géohistoire"]
+
+[[bloc_a]]
+libelle = "archéologie du paysage"
+termes = ["archéologie du paysage", "landscape archaeology", "archéologie du territoire", "territorial archaeology"]
+termes_fr = ["archéologie du paysage", "archéologie du territoire"]
+termes_en = ["landscape archaeology", "territorial archaeology"]
+mots_sans_accents = ["archeologie du paysage", "archeologie du territoire"]
+mots_theses = ["archéologie du paysage", "archéologie du territoire"]
+
+[[bloc_a]]
+libelle = "archéologie numérique"
+termes = ["archéologie numérique", "digital archaeology", "humanités numériques", "digital humanities"]
+termes_fr = ["archéologie numérique", "humanités numériques"]
+termes_en = ["digital archaeology", "digital humanities"]
+mots_sans_accents = ["archeologie numerique", "humanites numeriques"]
+mots_theses = ["archéologie numérique", "humanités numériques"]
+
+[[bloc_a]]
+libelle = "archéologie de terrain"
+termes = ["archéologie de terrain", "field archaeology", "archéologie préventive", "preventive archaeology"]
+termes_fr = ["archéologie de terrain", "archéologie préventive"]
+termes_en = ["field archaeology", "preventive archaeology"]
+mots_sans_accents = ["archeologie de terrain", "archeologie preventive"]
+mots_theses = ["archéologie de terrain", "archéologie préventive"]
+
+[[bloc_b]]
+libelle = "SIG"
+termes = ["SIG", "GIS", "système d'information géographique", "geographic information system"]
+termes_fr = ["SIG", "système d'information géographique"]
+termes_en = ["GIS", "geographic information system"]
+mots_sans_accents = ["systeme information geographique", "sig"]
+mots_theses = ["système d'information géographique", "SIG"]
+
+[[bloc_b]]
+libelle = "géomatique/geomatics/geospatial"
+termes = ["géomatique", "geomatics", "geospatial"]
+termes_fr = ["géomatique"]
+termes_en = ["geomatics", "geospatial"]
+mots_sans_accents = ["geomatique", "geospatial"]
+mots_theses = ["géomatique", "géospatial"]
+
+[[bloc_b]]
+libelle = "analyse spatiale"
+termes = ["analyse spatiale", "spatial analysis"]
+termes_fr = ["analyse spatiale"]
+termes_en = ["spatial analysis"]
+mots_sans_accents = ["analyse spatiale"]
+mots_theses = ["analyse spatiale"]
+
+[[bloc_b]]
+libelle = "télédétection/remote sensing"
+termes = ["télédétection", "remote sensing"]
+termes_fr = ["télédétection"]
+termes_en = ["remote sensing"]
+mots_sans_accents = ["teledetection"]
+mots_theses = ["télédétection"]
+
+[[bloc_b]]
+libelle = "LiDAR"
+termes = ["LiDAR", "lidar"]
+termes_fr = ["LiDAR"]
+termes_en = ["lidar"]
+mots_sans_accents = ["lidar"]
+mots_theses = ["lidar"]
+
+[[bloc_b]]
+libelle = "BIM"
+termes = ["BIM"]
+termes_fr = ["BIM"]
+termes_en = ["BIM"]
+mots_sans_accents = ["bim"]
+mots_theses = ["BIM"]
+
+[[bloc_b]]
+libelle = "SIG 3D / 3D GIS"
+termes = ["SIG 3D", "3D GIS"]
+termes_fr = ["SIG 3D"]
+termes_en = ["3D GIS"]
+mots_sans_accents = ["sig 3d"]
+mots_theses = ["SIG 3D"]
+
+[[bloc_b]]
+libelle = "modèle numérique de terrain"
+termes = ["modèle numérique de terrain", "digital elevation model", "DEM", "MNT"]
+termes_fr = ["modèle numérique de terrain", "MNT"]
+termes_en = ["digital elevation model", "DEM"]
+mots_sans_accents = ["modele numerique de terrain", "mnt"]
+mots_theses = ["modèle numérique de terrain", "MNT"]
+
+[[bloc_b]]
+libelle = "cartographie/mapping"
+termes = ["cartographie", "mapping"]
+termes_fr = ["cartographie"]
+termes_en = ["mapping"]
+mots_sans_accents = ["cartographie"]
+mots_theses = ["cartographie"]
+
+[[bloc_b]]
+libelle = "webSIG"
+termes = ["webSIG", "webGIS"]
+termes_fr = ["webSIG"]
+termes_en = ["webGIS"]
+mots_sans_accents = ["websig"]
+mots_theses = ["webSIG"]
+
+# Concept propre aux portails interrogés terme à terme (SUDOC, theses.fr, Frantiq) :
+# il n'entre pas dans les 100 couples de HAL, OpenAlex et Persée.
+[[bloc_b_complementaire]]
+libelle = "deep learning"
+termes_fr = ["apprentissage profond"]
+mots_sans_accents = ["apprentissage profond"]
+mots_theses = ["apprentissage profond"]

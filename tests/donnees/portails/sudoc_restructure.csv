@@ -1,0 +1,2 @@
+id_biblio,portail,id_portail,DOI,uri,auteurs,titre,resume,date,mots_cles,AxB,type
+SUD000001,SUDOC,100000001,,https://sudoc.example/100000001,Durand Alice,Un SIG pour la fouille du site fictif de Valombre,,2012,Archéologie ; SIG,archéologie × SIG,LIVRE

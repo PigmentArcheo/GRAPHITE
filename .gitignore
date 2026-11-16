@@ -1,0 +1,24 @@
+# Secrets
+.env
+
+# Données et sorties (jamais publiées)
+data/*
+!data/README.md
+out/
+
+# Gros fichiers et graphes
+*.csv
+!tests/donnees/**/*.csv
+*.tar.gz
+*.graphml
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.venv/
+venv/

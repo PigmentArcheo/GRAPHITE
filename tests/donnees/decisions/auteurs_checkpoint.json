@@ -1,0 +1,21 @@
+{
+  "fam:bruno|martin": [
+    {
+      "canonical": "Bruno Martin",
+      "members": [
+        "Bruno Martin",
+        "Martin Bruno"
+      ],
+      "raison": "fictif"
+    }
+  ],
+  "fam:fanny|garnier": [
+    {
+      "canonical": "Fanny Garnier",
+      "members": [
+        "Fanny Garnier"
+      ],
+      "raison": "fictif"
+    }
+  ]
+}

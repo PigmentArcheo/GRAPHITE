@@ -1,0 +1,5 @@
+{"totalHits": 1, "theses": [
+  {"id": "2019FICT0001", "titrePrincipal": "Modélisation archéologique par SIG", "auteurs": [{"nom": "Lefèvre", "prenom": "Émile"}],
+   "dateSoutenance": "2019-06-01", "directeurs": [{"nom": "Durand", "prenom": "Alice"}], "etabSoutenanceN": "Université fictive",
+   "discipline": "Archéologie", "status": "soutenue", "sujets": {"fr": ["SIG", {"libelle": "Néolithique"}]}, "resumes": {"fr": "Résumé fictif."}}
+]}

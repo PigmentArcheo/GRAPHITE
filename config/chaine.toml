@@ -1,0 +1,133 @@
+# Paramètres des étapes de la chaîne, de la fusion au graphe.
+
+[fichiers]
+# Fichiers au schéma commun (dossier des données), dans l'ordre de la fusion.
+entrees_fusion = [
+    "hal_restructure.csv",
+    "openalex_restructure.csv",
+    "frantiq_restructure.csv",
+    "persee_restructure.csv",
+    "sudoc_restructure.csv",
+    "theses_restructure.csv",
+]
+corrections_manuelles = "corrections_manuelles.csv"
+decisions_auteurs = "auteurs_clusters_corriges.csv"
+
+# Sorties (dossier des sorties).
+fusion = "biblio_merged.csv"
+filtre_negatif_gardees = "biblio_p1.csv"
+filtre_negatif_rejetees = "biblio_p1_rejetes.csv"
+filtre_positif_gardees = "biblio_p2.csv"
+filtre_positif_rejetees = "biblio_p2_rejetes.csv"
+dedoublonnage_notices = "biblio_dedup.csv"
+dedoublonnage_annotees = "biblio_annotated.csv"
+dedoublonnage_oeuvres = "work_clusters.json"
+classification_gardees = "biblio_sig.csv"
+classification_rejetees = "biblio_sig_rejetes.csv"
+classification_a_relire = "biblio_sig_a_relire.csv"
+classification_reprise = "sig_checkpoint.json"
+auteurs_formes = "auteurs_clusters.csv"
+auteurs_personnes = "person_clusters.json"
+auteurs_notices = "biblio_avec_persons.csv"
+auteurs_reprise = "auteurs_checkpoint.json"
+dossier_graphe = "neo4j"
+dossier_bilans = "bilans"
+
+[schema]
+colonnes = [
+    "id_biblio", "portail", "id_portail", "DOI", "uri",
+    "auteurs", "titre", "resume", "date", "mots_cles", "AxB", "type",
+]
+separateur_auteurs = "||"
+separateur_couples = "||"
+
+[fusion]
+# Identifiant forgé pour une notice sans id_biblio : trois premières lettres du
+# nom de fichier, la lettre X, puis un numéro sur six chiffres.
+longueur_prefixe_identifiant = 3
+lettre_identifiant_forge = "X"
+chiffres_identifiant_forge = 6
+
+[dedoublonnage]
+# Ordre de préférence des portails pour la notice gardée (0 = préférée).
+priorite_portails = { HAL = 0, OPENALEX = 1, PERSEE = 2, FRANTIQ = 3, JSTOR = 4, SUDOC = 5, OPENAIRE = 6, ISIDORE = 7 }
+priorite_portail_inconnu = 99
+seuil_similarite_titre = 0.85
+longueur_min_titre_significatif = 12
+poids_titre_composite = 0.6
+poids_auteurs_composite = 0.4
+ecart_max_annees = 3
+seuil_fusion_malgre_dois_differents = 0.97
+longueur_min_complement_compagnon = 10
+longueur_debut_titre_compagnon = 60
+seuil_cosinus_blocage = 0.6
+analyseur_tfidf = "char_wb"
+ngrammes_tfidf = [3, 4]
+frequence_min_tfidf = 2
+frequence_max_tfidf = 0.95
+# Lignes de la matrice de similarité calculées à la fois (mémoire seulement).
+lignes_par_lot_cosinus = 1000
+colonnes_richesse = ["DOI", "resume", "auteurs", "mots_cles", "AxB"]
+prefixe_oeuvre = "wc_"
+chiffres_oeuvre = 6
+longueur_titre_representatif = 200
+# Arbitrage par le modèle de langue : paires de score dans [borne_basse, borne_haute[.
+borne_basse_arbitrage = 0.85
+borne_haute_arbitrage = 0.92
+seuil_confiance_llm = 0.85
+delai_llm_secondes = 60
+
+[classification]
+seuil_confiance = 0.7
+seuil_relecture = 0.6
+longueur_max_resume = 2000
+delai_llm_secondes = 90
+travailleurs = 4
+notices_par_sauvegarde = 20
+
+[auteurs]
+seuil_similarite_nom = 0.95
+coauteurs_communs_min = 1
+jaccard_coauteurs_min = 0.1
+seuil_nom_coauteurs = 0.7
+taille_min_groupe_llm = 2
+delai_llm_secondes = 120
+longueur_identifiant_texte = 40
+longueur_min_cle_permutation = 3
+particules = ["de", "da", "del", "di", "du", "le", "la", "van", "von", "der", "den", "el", "al", "ben"]
+
+[auteurs.confiances]
+annotation = 1.0
+singleton = 0.5
+fuzzy_precoce = 0.95
+famille_unique = 0.9
+fuzzy = 0.95
+fuzzy_no_llm = 0.85
+llm = 0.85
+meme_work = 0.99
+alias_max = 0.95
+fallback_singleton = 0.5
+
+[graphe]
+longueur_cle_texte = 80
+longueur_titre_oeuvre = 500
+longueur_min_cle_permutation = 3
+
+[llm]
+modele = "mistral"
+# Adresse par défaut ; la variable d'environnement OLLAMA_URL la remplace.
+url = "http://localhost:11434"
+chemin_generation = "/api/generate"
+chemin_modeles = "/api/tags"
+delai_verification_secondes = 5
+
+[neo4j]
+# Adresse par défaut ; la variable d'environnement NEO4J_URI la remplace.
+uri = "bolt://localhost:7687"
+utilisateur = "neo4j"
+base = "neo4j"
+
+[corrections]
+# Colonnes qui repèrent une ligne dans le fichier des corrections manuelles
+# (par défaut : id_biblio).
+cles_par_fichier = { "auteurs_clusters.csv" = ["auteur_raw", "origine"] }

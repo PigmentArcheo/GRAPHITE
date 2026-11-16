@@ -1,0 +1,4 @@
+id_biblio,portail,id_portail,DOI,uri,auteurs,titre,resume,date,mots_cles,AxB,type
+OAL000001,OPENALEX,https://openalex.example/W1,10.9999/fictif.001,https://doi.example/10.9999/fictif.001,Alice Durand || Bruno Martin,Un SIG pour la fouille du site fictif de Valombre,,2012,GIS,archéologie × SIG,ARTICLE
+OAL000002,OPENALEX,https://openalex.example/W2,10.9999/fictif.002,https://doi.example/10.9999/fictif.002,Martin Bruno || Émile Lefèvre,Prospection LiDAR et géoréférencement des enclos protohistoriques,Relevés LiDAR traités dans un système d'information géographique.,2020,LiDAR,prospection × LiDAR,ARTICLE
+OAL000003,OPENALEX,https://openalex.example/W3,,,Fanny Garnier,Télédétection des parcellaires antiques,Photographies aériennes et télédétection sans traitement spatial.,2021,,périodes × télédétection/remote sensing,ARTICLE

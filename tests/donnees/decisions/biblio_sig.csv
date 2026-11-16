@@ -1,0 +1,6 @@
+id_biblio,llm_label,llm_confiance,llm_raison
+HAL000001,sig,0.95,prefiltre
+HAL000002,sig,0.8,cartographie
+OAL000002,sig,0.95,prefiltre
+PRS000001,sig,0.95,prefiltre
+THE000001,sig,0.95,prefiltre

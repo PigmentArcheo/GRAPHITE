@@ -1,0 +1,4 @@
+{"response": {"numFound": 2, "docs": [
+  {"halId_s": "hal-00000001", "doiId_s": "10.9999/fictif.001", "title_s": ["Un SIG pour la fouille du site fictif de Valombre"], "authFullName_s": ["Alice Durand", "Bruno Martin"], "producedDateY_i": 2012, "docType_s": "ART", "keyword_s": ["archéologie", "SIG"], "abstract_s": ["Analyse spatiale avec QGIS."], "uri_s": "https://hal.example/hal-00000001"},
+  {"halId_s": "hal-00000002", "title_s": ["Cartographie des nécropoles"], "authFullName_s": ["Chloé Petit"], "producedDateY_i": 2015, "docType_s": "COUV", "uri_s": "https://hal.example/hal-00000002"}
+]}}

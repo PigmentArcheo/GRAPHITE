@@ -1,0 +1,11 @@
+Notice A :
+  Titre: $titre_a
+  Auteurs: $auteurs_a
+  Année: $annee_a
+  DOI: $doi_a
+
+Notice B :
+  Titre: $titre_b
+  Auteurs: $auteurs_b
+  Année: $annee_b
+  DOI: $doi_b

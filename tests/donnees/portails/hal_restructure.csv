@@ -1,0 +1,4 @@
+id_biblio,portail,id_portail,DOI,uri,auteurs,titre,resume,date,mots_cles,AxB,type
+HAL000001,HAL,hal-00000001,10.9999/fictif.001,https://hal.example/hal-00000001,Alice Durand || Bruno Martin,Un SIG pour la fouille du site fictif de Valombre,Analyse spatiale des vestiges avec QGIS.,2012,archéologie | SIG,archéologie × SIG,ARTICLE
+HAL000002,HAL,hal-00000002,,https://hal.example/hal-00000002,Chloé Petit,Cartographie des nécropoles de la vallée imaginaire,Inventaire des sépultures et modèle numérique de terrain.,2015,nécropole,fouille × cartographie/mapping,ARTICLE
+HAL000003,HAL,hal-00000003,,https://hal.example/hal-00000003,Denis Roux,Protein folding in yeast cells,Gene expression and protein structure.,2018,,site × SIG,ARTICLE

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record xmlns="http://www.loc.gov/MARC21/slim">
+  <datafield tag="200"><subfield code="a">Atlas archéologique de la cité fictive</subfield></datafield>
+  <datafield tag="700"><subfield code="a">Hubert</subfield><subfield code="b">Gérard</subfield></datafield>
+  <datafield tag="210"><subfield code="d">1999</subfield></datafield>
+  <datafield tag="606"><subfield code="a">Cartographie</subfield></datafield>
+</record>

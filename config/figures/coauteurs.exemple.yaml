@@ -1,0 +1,24 @@
+# Exemple de paramètres nominatifs de la figure des co-auteurs (noms fictifs).
+# Le vrai fichier se place dans data/figures/coauteurs.yaml, hors Git.
+
+# Corrections d'affichage : forme du graphe -> forme affichée.
+corrections_noms:
+  "Durand Alice": "Alice Durand"
+  "martin, b.": "Bruno Martin"
+
+# Personnes dont le nom est écrit sur la figure (formes affichées).
+etiquettes:
+  - "Alice Durand"
+  - "Bruno Martin"
+
+# Positions fixées à la main (coordonnées de la mise en page, entre -1 et 1).
+positions_fixees:
+  "Alice Durand": [0.0, 0.0]
+  "Bruno Martin": [0.4, -0.2]
+
+# Groupes agrandis dans des vues de détail : nom du groupe -> membres.
+groupes_zoom:
+  equipe_fictive:
+    - "Alice Durand"
+    - "Bruno Martin"
+    - "Chloé Petit"

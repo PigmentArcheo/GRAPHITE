@@ -1,0 +1,243 @@
+# Paramètres de l'étape « analyses ».
+
+[periode]
+# Années retenues : de premiere_annee à derniere_annee incluses.
+premiere_annee = 1996
+derniere_annee = 2025
+
+[publications]
+# Notices par plateforme et par année (bornes de la période).
+# Œuvres par concept et par année, à partir de premiere_annee (sans borne haute).
+# Co-occurrences concept A × concept B, en œuvres distinctes.
+seuil_lien_co_occurrence = 3
+annees_citees = [2001, 2011, 2021]
+
+[mots_cles]
+# Part des mots-clés du bloc B : libellés fusionnés et ordre du bloc B.
+fusion_libelles = { "cartographie/mapping" = "cartographie", "cartographie/mapping/webSIG" = "cartographie", "télédétection/remote sensing" = "télédétection", "modèle numérique de terrain" = "MNT", "géomatique/geomatics/geospatial" = "géomatique", "SIG 3D / 3D GIS" = "SIG 3D" }
+bloc_b = ["SIG", "analyse spatiale", "cartographie", "LiDAR", "télédétection", "MNT", "géomatique", "SIG 3D", "webSIG", "BIM"]
+trio = ["LiDAR", "télédétection", "MNT"]
+innovations = ["SIG 3D", "webSIG", "BIM"]
+annee_citee = 2025
+premiere_periode_trio = [1996, 2007]
+seconde_periode_trio = [2018, 2025]
+
+[reseau]
+# Associations dominantes et noyau du bloc B.
+associations_citees = 5
+noyau = ["SIG", "analyse spatiale", "cartographie/mapping"]
+
+[sankey]
+# Flux concept A → couple → concept B, en œuvres distinctes,
+# liens de poids au moins égal au seuil, les plus forts d'abord, dans la limite.
+seuil_poids = 3
+liens_max = 300
+separateur_couple = " × "
+fusion_libelles = { "cartographie/mapping" = "cartographie", "télédétection/remote sensing" = "télédétection", "modèle numérique de terrain" = "MNT" }
+trio = ["LiDAR", "télédétection", "MNT"]
+noyau = ["SIG", "analyse spatiale", "cartographie"]
+concepts_cites = ["archéologie numérique", "archéologie de terrain", "périodes"]
+
+[coauteurs]
+# Réseau des co-auteurs : une publication de plus de auteurs_max personnes
+# n'ajoute pas de liens (elle relierait des centaines de personnes d'un coup).
+auteurs_max = 30
+bornes_periodes = [1995, 2009, 2015, 2026]
+libelles_periodes = ["1996-2009", "2010-2015", "2016-2025"]
+seuil_equipe = 4
+graine_louvain = 3
+
+[mots_titres]
+# Co-occurrences des mots des titres par année : équivalent de la requête Neo4j.
+longueur_min_mot = 3
+longueur_min_pluriel = 5
+poids_min = 3
+accents = [
+    ["é", "e"],
+    ["è", "e"],
+    ["ê", "e"],
+    ["ë", "e"],
+    ["à", "a"],
+    ["â", "a"],
+    ["î", "i"],
+    ["ï", "i"],
+    ["ô", "o"],
+    ["ù", "u"],
+    ["û", "u"],
+    ["ç", "c"],
+]
+ponctuation = [
+    ".", ",", ":", ";", "!", "?", "(", ")",
+    "[", "]", "#", "@", "/", "\"",
+]
+apostrophes = [
+    "'", "‘", "’",
+]
+# Expressions remplacées par un mot unique, dans cet ordre.
+expressions_anglaises = [
+    ["early iron age", "age_fer"],
+    ["late iron age", "age_fer"],
+    ["early bronze age", "age_bronze"],
+    ["late bronze age", "age_bronze"],
+    ["iron age", "age_fer"],
+    ["bronze age", "age_bronze"],
+    ["stone age", "paleolithique"],
+    ["early medieval", "haut_medieval"],
+    ["late medieval", "bas_medieval"],
+    ["high medieval", "haut_medieval"],
+    ["time series", "serie_temporelle"],
+]
+expressions_periodes = [
+    ["haut medieval", "haut_medieval"],
+    ["bas medieval", "bas_medieval"],
+    ["paleolithique moyen", "paleolithique_moyen"],
+    ["paleolithique superieur", "paleolithique_sup"],
+    ["paleolithique inferieur", "paleolithique_inf"],
+    ["age du bronze", "age_bronze"],
+    ["age bronze", "age_bronze"],
+    ["bronze final", "age_bronze"],
+    ["bronze moyen", "age_bronze"],
+    ["age du fer", "age_fer"],
+]
+expressions_periodes_lieux = [
+    ["pleistocene superieur", "pleistocene_sup"],
+    ["age fer", "age_fer"],
+    ["fer ancien", "age_fer"],
+    ["moyen age", "moyen_age"],
+    ["epoque romaine", "epoque_romaine"],
+    ["la tene", "la_tene"],
+    ["neolithique final", "neolithique"],
+    ["mont beuvray", "mont_beuvray"],
+    ["bassin parisien", "bassin_parisien"],
+    ["massif central", "massif_central"],
+    ["vallee seine", "vallee_seine"],
+    ["val d oise", "val_d_oise"],
+    ["biturige cubi", "biturige_cubi"],
+]
+# Synonymes de SIG et d'analyse spatiale (option --expressions-protegees), appliqués avant les méthodes.
+expressions_sig_analyse_spatiale = [
+    ["systemes d information geographiques", "sig"],
+    ["systemes d information geographique", "sig"],
+    ["systeme d information geographique", "sig"],
+    ["systemes d information", "sig"],
+    ["geographic information systems", "sig"],
+    ["geographic information system", "sig"],
+    ["geographical information systems", "sig"],
+    ["geographical information system", "sig"],
+    ["analyses spatiales", "analyse_spatiale"],
+    ["analyse spatiales", "analyse_spatiale"],
+    ["spatial analyses", "analyse_spatiale"],
+    ["spatial analysis", "analyse_spatiale"],
+    ["analisi spaziale", "analyse_spatiale"],
+    ["analisis espacial", "analyse_spatiale"],
+]
+expressions_methodes = [
+    ["remote sensing", "teledetection"],
+    ["analyse spatiale", "analyse_spatiale"],
+    ["analyse spatial", "analyse_spatiale"],
+    ["systeme information", "sig"],
+    ["systeme d information", "sig"],
+    ["machine learning", "machine_learning"],
+    ["longue duree", "longue_duree"],
+    ["long terme", "longue_duree"],
+    ["occupation sol", "occupation_sol"],
+    ["laser scanning", "laser_scanning"],
+    ["desert kite", "desert_kite"],
+]
+# Mots gardés tels quels (pas de retrait du s final).
+mots_proteges = [
+    "paris", "lens", "reims", "tours", "dijon", "arles", "nimes", "lyon",
+    "somme", "oise", "seine", "yonne", "languedoc", "tunisie", "syrie", "guatemala",
+    "grece", "macedonia",
+]
+# Formes normalisées : forme retenue = [mots ramenés à cette forme].
+[mots_titres.normalisations]
+"paleolithique_moyen" = ["paleolithique_moyen"]
+"paleolithique_sup" = ["paleolithique_sup", "paleolithique_superieur"]
+"paleolithique_inf" = ["paleolithique_inf", "paleolithique_inferieur"]
+"paleolithique" = ["paleolithique"]
+"neolithique" = ["neolithique", "neolithic"]
+"age_bronze" = ["age_bronze"]
+"age_fer" = ["age_fer", "fer"]
+"medieval" = ["haut_medieval", "moyen_age", "medieval", "medievale", "medievaux"]
+"bas_medieval" = ["bas_medieval"]
+"epoque_romaine" = ["epoque_romaine", "romain", "romaine", "roman", "romains", "gallo", "antique", "ancient", "antiquite"]
+"protohistoire" = ["protohistoire", "protohistorique"]
+"prehistoire" = ["prehistoire", "prehistorique", "prehistoric", "prehistoria"]
+"mesolithique" = ["mesolithic", "mesolithique"]
+"chalcolithique" = ["chalcolithique"]
+"archeologie" = ["archaeological", "archaeology", "archeologique", "archeologie", "arqueologia"]
+"spatial" = ["spatial", "spatially", "spatiale", "spatiaux", "spatio", "temporal"]
+"reseau" = ["reseau", "reseaux", "network", "networks"]
+"modele" = ["modele", "modeles", "model", "models", "modeling", "modelling", "modelo"]
+"donnees" = ["donnee", "donnees", "data", "dataset", "datasets"]
+"analyse" = ["analyse", "analysi", "analisi", "analysis", "analyses"]
+"sig" = ["sig", "gis"]
+"lidar" = ["lidar"]
+"cartographie" = ["cartographie", "mapping", "carte"]
+"teledetection" = ["teledetection", "remote_sensing", "airborne"]
+"paysage" = ["paysage", "landscape", "paisaje"]
+"peuplement" = ["peuplement", "settlement"]
+"territoire" = ["territoire", "territory", "territorio"]
+"dynamique" = ["dynamique", "dynamic"]
+"outil" = ["outil", "tool"]
+"numerique" = ["numerique", "digital"]
+"recherche" = ["recherche", "research"]
+"foret" = ["foret", "forest"]
+"vallee" = ["vallee", "valley"]
+"systeme" = ["systeme", "system"]
+"urbain" = ["urban", "urbaine", "urbain"]
+"hyperspectrale" = ["hyperspectral", "hyperspectrale"]
+"patrimoine" = ["heritage", "patrimoine", "cultural"]
+"prospection" = ["survey", "prospection"]
+"gestion" = ["management", "gestion"]
+"mont_beuvray" = ["mont_beuvray", "bibracte"]
+"massif_central" = ["massif_central"]
+"france" = ["france", "francaise", "francais"]
+"etude" = ["study", "etude"]
+"histoire" = ["history", "histoire"]
+"methode" = ["method", "methode"]
+"pratique" = ["practice", "pratique"]
+"exemple" = ["example", "exemple"]
+"espace" = ["space", "espace"]
+"sud_ouest" = ["sud-ouest", "south-west", "southwest", "sud_ouest"]
+"habitat" = ["abitato", "habitat"]
+"humain" = ["human", "humain"]
+"geophysique" = ["geophysical", "geophysique"]
+"application" = ["aplicacion", "aplicación", "application"]
+"ville" = ["city", "ville"]
+"climat" = ["climate", "climat"]
+"diversite" = ["diversity", "diversite"]
+"grece" = ["greece", "grece"]
+"phenomene" = ["phenomenon", "phenomene"]
+"siecle" = ["siglo", "siecle"]
+
+[mots_titres.vides]
+# Mots ignorés, après retrait du pluriel et normalisation.
+mots = [
+    "avec", "pour", "dans", "les", "des", "une", "sur", "par",
+    "aux", "dont", "entre", "leurs", "ainsi", "vers", "chez", "plus",
+    "cette", "leur", "tout", "tous", "bien", "comme", "meme", "autre",
+    "autres", "aussi", "mais", "donc", "soit", "lors", "tres", "car",
+    "qui", "que", "quoi", "quand", "alors", "sans", "sous", "apres",
+    "avant", "encore", "toute", "toutes", "celle", "ceux", "celles", "celui",
+    "selon", "afin", "etre", "avoir", "faire", "etant", "ici", "non",
+    "peu", "trop", "grand", "jusqu", "apport", "dun", "approche", "partir",
+    "mise", "valeur", "bilan", "perspective", "objet", "debut", "fin", "siecle",
+    "premier", "second", "resultat", "formation", "groupe", "thematique", "utilisation", "connaissance",
+    "journee", "projet", "information", "haut", "bas", "mis", "air", "pari",
+    "basse", "moyen", "dun", "val", "caour", "segesta", "grevena", "nouvelle",
+    "nord", "south", "north", "ouest", "west", "east", "sud", "eastern",
+    "western", "southern", "central", "the", "and", "with", "from", "this",
+    "that", "these", "those", "some", "have", "been", "were", "into",
+    "their", "than", "also", "such", "which", "when", "for", "using",
+    "used", "based", "case", "new", "its", "about", "after", "under",
+    "while", "where", "here", "then", "each", "both", "first", "last",
+    "high", "long", "large", "small", "old", "use", "uses", "early",
+    "late", "change", "upper", "time", "approach", "del", "della", "degli",
+    "alla", "per", "una", "con", "los", "las", "para", "por",
+    "nel", "dei", "eta", "reciente", "terra", "amata", "imperii", "romani",
+    "tabula", "informatizzata", "skála", "stránská", "biturige", "cubi", "cal", "age",
+    "jeunesse", "ministere", "nationale", "direction", "gtnum", "gis2if", "hn_education", "education",
+    "inrap", "20th", "century",
+]

@@ -1,0 +1,4 @@
+Titre : $titre
+Résumé : $resume
+Mots-clés : $mots_cles
+AxB : $axb

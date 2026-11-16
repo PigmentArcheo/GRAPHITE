@@ -1,0 +1,14 @@
+Reponds UNIQUEMENT avec du JSON valide, aucun texte avant ou apres.
+
+Groupe d'auteurs a dedupliquer (meme nom de famille) :
+$groupe_brut
+
+Formes normalisees :
+$groupe_normalise
+
+Regles : par defaut eclater (1 personne = 1 cluster). Fusionner SEULEMENT si meme prenom complet + initiales compatibles. Initiales divergentes = personnes differentes.
+
+Format de reponse obligatoire:
+{"clusters":[{"canonical":"nom le plus complet","members":["variante1","variante2"],"raison":"courte"}]}
+
+JSON:

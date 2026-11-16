@@ -1,0 +1,8 @@
+{"meta": {"count": 1, "next_cursor": null}, "results": [
+  {"id": "https://openalex.example/W2", "doi": "https://doi.org/10.9999/fictif.002", "title": "Prospection LiDAR des enclos", "publication_year": 2020, "type": "article", "language": "fr",
+   "primary_location": {"landing_page_url": "https://doi.example/10.9999/fictif.002", "source": {"display_name": "Revue fictive"}},
+   "open_access": {"is_oa": true, "oa_url": null}, "cited_by_count": 3,
+   "authorships": [{"author": {"display_name": "Bruno Martin"}, "institutions": [{"display_name": "Laboratoire fictif", "country_code": "FR"}]}],
+   "keywords": [{"display_name": "LiDAR"}], "abstract_inverted_index": {"Relevés": [0], "LiDAR": [1], "archéologiques": [2]},
+   "topics": [{"display_name": "Archéologie fictive", "score": 0.9}]}
+]}

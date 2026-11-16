@@ -1,0 +1,281 @@
+# Interrogation des plateformes et passage au schéma commun.
+# Pauses entre requêtes, délais et nombres de tentatives par plateforme.
+
+[signature]
+# Signature envoyée aux serveurs, identique pour toutes les plateformes.
+modele = "bibliosig/{version} (+https://github.com/PigmentArcheo/GRAPHITE)"
+
+[dossiers]
+# Sous-dossiers du dossier des données.
+collecte = "collecte"
+
+# HAL : une requête par couple, chaque concept réuni par OU.
+[hal]
+strategie = "ou_par_concept"
+url = "https://api.archives-ouvertes.fr/search/"
+champs_recherche = ["title_t", "keyword_t", "abstract_t"]
+champs_renvoyes = ["halId_s", "doiId_s", "title_s", "authFullName_s", "producedDateY_i", "docType_s", "keyword_s", "abstract_s", "uri_s"]
+types_documents = ["COUV", "ART", "HDR", "OTHER", "OUV", "THESE"]
+tri = "producedDateY_i desc"
+notices_par_page = 100
+delai_secondes = 30
+pause_entre_pages = 0.3
+pause_entre_couples = 0.5
+champ_identifiant = "halId_s"
+champs_detection = ["title_s", "keyword_s", "abstract_s"]
+fichier_resultats = "hal_matrix_results_100_granular.csv"
+fichier_dedoublonne = "hal_matrix_dedup_100.csv"
+fichier_statistiques = "hal_matrix_stats_100_granular.csv"
+
+# OpenAlex : une requête par couple (filtres title_and_abstract.search), production française.
+[openalex]
+strategie = "ou_par_concept"
+url = "https://api.openalex.org/works"
+code_pays = "fr"
+types_documents = "article|book-chapter|book|dissertation"
+champs_selectionnes = ["id", "doi", "title", "publication_year", "type", "language", "primary_location", "open_access", "cited_by_count", "authorships", "keywords", "abstract_inverted_index", "topics"]
+champs_renvoyes = ["id", "doi", "title", "publication_year", "type", "language", "primary_location.source.display_name", "primary_location.landing_page_url", "open_access.is_oa", "open_access.oa_url", "cited_by_count", "authorships", "institutions", "keywords", "abstract", "topics"]
+notices_par_page = 100
+delai_secondes = 30
+tentatives_max = 6
+pause_limite_debit_secondes = 15
+pause_erreur_reseau_secondes = 5
+pause_entre_pages = 0.12
+pause_entre_couples = 0.1
+filtre_verification = "title_and_abstract.search:archaeology"
+champ_identifiant = "id"
+fichier_resultats = "openalex_matrix_results_100_granular.csv"
+fichier_dedoublonne = "openalex_matrix_dedup.csv"
+fichier_statistiques = "openalex_matrix_stats_100_granular.csv"
+
+# Persée : archives RDF des revues, puis recherche locale par couple.
+[persee]
+strategie = "ou_par_concept"
+# Persée réunit deux concepts du bloc B en un seul.
+fusion_concepts_b = { "cartographie/mapping/webSIG" = ["cartographie/mapping", "webSIG"] }
+delai_telechargement_secondes = 120
+pause_entre_collections = 0.2
+langues_preferees = ["fr", "en", "de"]
+prefixe_documents = "http://data.persee.fr/doc/"
+suffixe_documents = "#Web"
+prefixe_autorites = "http://data.persee.fr/authority/"
+dossier_archives = "persee_dumps"
+fichier_index = "persee_index.csv"
+fichier_resultats = "persee_matrix_results.csv"
+fichier_dedoublonne = "persee_matrix_dedup.csv"
+fichier_statistiques = "persee_matrix_stats.csv"
+
+[persee.collections]
+galia = ["Gallia", "http://data.persee.fr/dumps/PERSEE_collection_galia_rdf.tar.gz"]
+galip = ["Gallia Préhistoire", "http://data.persee.fr/dumps/PERSEE_collection_galip_rdf.tar.gz"]
+bspf = ["Bulletin de la Société préhistorique française", "http://data.persee.fr/dumps/PERSEE_collection_bspf_rdf.tar.gz"]
+arcme = ["Archéologie médiévale", "http://data.persee.fr/dumps/PERSEE_collection_arcme_rdf.tar.gz"]
+amime = ["Archéologie du Midi Médiéval", "http://data.persee.fr/dumps/PERSEE_collection_amime_rdf.tar.gz"]
+dam = ["Documents d'Archéologie Méridionale", "http://data.persee.fr/dumps/PERSEE_collection_dam_rdf.tar.gz"]
+arsci = ["ArchéoSciences", "http://data.persee.fr/dumps/PERSEE_collection_arsci_rdf.tar.gz"]
+arnil = ["Archéo-Nil", "http://data.persee.fr/dumps/PERSEE_collection_arnil_rdf.tar.gz"]
+nauti = ["Archaeonautica", "http://data.persee.fr/dumps/PERSEE_collection_nauti_rdf.tar.gz"]
+aquit = ["Aquitania", "http://data.persee.fr/dumps/PERSEE_collection_aquit_rdf.tar.gz"]
+bsnaf = ["Bulletin Société nationale des Antiquaires de France", "http://data.persee.fr/dumps/PERSEE_collection_bsnaf_rdf.tar.gz"]
+crai = ["Comptes rendus Académie des Inscriptions et Belles-Lettres", "http://data.persee.fr/dumps/PERSEE_collection_crai_rdf.tar.gz"]
+dha = ["Dialogues d'histoire ancienne", "http://data.persee.fr/dumps/PERSEE_collection_dha_rdf.tar.gz"]
+mefr = ["Mélanges de l'école française de Rome", "http://data.persee.fr/dumps/PERSEE_collection_mefr_rdf.tar.gz"]
+bch = ["Bulletin de Correspondance Hellénique", "http://data.persee.fr/dumps/PERSEE_collection_bch_rdf.tar.gz"]
+acsam = ["Actes congrès Société d'Archéologie Médiévale", "http://data.persee.fr/dumps/PERSEE_collection_acsam_rdf.tar.gz"]
+ista = ["Collection Institut Sciences et Techniques de l'Antiquité", "http://data.persee.fr/dumps/PERSEE_collection_ista_rdf.tar.gz"]
+geo = ["Annales de géographie", "http://data.persee.fr/dumps/PERSEE_collection_geo_rdf.tar.gz"]
+ingeo = ["L'Information Géographique", "http://data.persee.fr/dumps/PERSEE_collection_ingeo_rdf.tar.gz"]
+geoca = ["Géocarrefour", "http://data.persee.fr/dumps/PERSEE_collection_geoca_rdf.tar.gz"]
+mappe = ["Mappemonde", "http://data.persee.fr/dumps/PERSEE_collection_mappe_rdf.tar.gz"]
+spgeo = ["L'Espace géographique", "http://data.persee.fr/dumps/PERSEE_collection_spgeo_rdf.tar.gz"]
+bagf = ["Bulletin Association de Géographes Français", "http://data.persee.fr/dumps/PERSEE_collection_bagf_rdf.tar.gz"]
+morfo = ["Géomorphologie : relief, processus, environnement", "http://data.persee.fr/dumps/PERSEE_collection_morfo_rdf.tar.gz"]
+edyte = ["Collection EDYTEM — Cahiers de géographie", "http://data.persee.fr/dumps/PERSEE_collection_edyte_rdf.tar.gz"]
+ahess = ["Annales (Histoire, Sciences Sociales)", "http://data.persee.fr/dumps/PERSEE_collection_ahess_rdf.tar.gz"]
+medio = ["Le médiéviste et l'ordinateur", "http://data.persee.fr/dumps/PERSEE_collection_medio_rdf.tar.gz"]
+hism = ["Histoire & Mesure", "http://data.persee.fr/dumps/PERSEE_collection_hism_rdf.tar.gz"]
+
+# Portails interrogés terme à terme (SUDOC, theses.fr, Frantiq) : 19 mots A × 14 mots B,
+# dans l'ordre de cette liste ; les résultats sont ensuite rattachés aux couples de concepts.
+[mots_terme_a_terme]
+sans_accents_a = ["archeologie", "archeologique", "prehistoire", "protohistoire", "antiquite", "medieval", "paleolithique", "patrimoine archeologique", "site", "prospection", "fouille", "archeogeographie", "archeologie du paysage", "archeologie du territoire", "archeologie numerique", "humanites numeriques", "geohistoire", "archeologie de terrain", "archeologie preventive"]
+sans_accents_b = ["systeme information geographique", "sig", "geomatique", "geospatial", "analyse spatiale", "teledetection", "lidar", "bim", "sig 3d", "modele numerique de terrain", "mnt", "cartographie", "websig", "apprentissage profond"]
+theses_a = ["archéologie", "archéologique", "préhistoire", "protohistoire", "antiquité", "médiéval", "paléolithique", "patrimoine archéologique", "site archéologique", "prospection", "fouille", "archéogéographie", "archéologie du paysage", "archéologie du territoire", "archéologie numérique", "humanités numériques", "géohistoire", "archéologie de terrain", "archéologie préventive"]
+theses_b = ["système d'information géographique", "SIG", "géomatique", "géospatial", "analyse spatiale", "télédétection", "lidar", "BIM", "SIG 3D", "modèle numérique de terrain", "MNT", "cartographie", "webSIG", "apprentissage profond"]
+# Exclusions communes à SUDOC et Frantiq (titre et collection).
+mots_exclusion = ["rapport de", "rapport d'", "rapport final", "rapport technique", "communication", "compte rendu", "compte-rendu", "actes du colloque", "actes de colloque", "actes du congres", "proceedings"]
+premiere_annee = 1996
+derniere_annee = 2026
+
+[sudoc]
+strategie = "terme_a_terme"
+url = "https://www.sudoc.abes.fr/cbs/sru/"
+url_notice = "https://www.sudoc.fr/{ppn}"
+notices_par_page = 100
+delai_secondes = 120
+pause_entre_pages = 1.5
+pause_entre_couples = 1.5
+longueur_max_resume = 300
+dossier = "resultats_sudoc_v6"
+
+[theses]
+strategie = "terme_a_terme"
+url = "https://theses.fr/api/v1/theses/recherche/"
+url_these = "https://theses.fr/{nnt}"
+url_complement = "https://theses.fr/api/v1/theses/these/{nnt}"
+notices_par_page = 100
+notices_max_par_couple = 500
+delai_secondes = 30
+pause_min = 1.5
+pause_max = 3.0
+pause_entre_couples = 3.0
+pause_sur_erreur = 15.0
+tentatives_max = 3
+longueur_max_resume = 1000
+dossier = "results_theses"
+pause_complement = 1.0
+fichier_reprise = "_state.json"
+
+[frantiq]
+strategie = "terme_a_terme"
+url = "https://catalogue.frantiq.fr"
+chemin_recherche = "/cgi-bin/koha/opac-search.pl"
+chemin_export = "/cgi-bin/koha/opac-export.pl"
+chemin_notice = "/cgi-bin/koha/opac-detail.pl?biblionumber={numero}"
+notices_par_page = 20
+pages_max = 50
+delai_recherche_secondes = 60
+delai_notice_secondes = 30
+pause_entre_pages = 1.5
+pause_entre_notices = 0.5
+pause_entre_couples = 2
+longueur_max_resume = 300
+dossier = "resultats_frantiq"
+
+# Passage au schéma commun.
+[normalisation.hal]
+prefixe = "HAL"
+portail = "HAL"
+fichier_restructure = "hal_restructure.csv"
+types = { ART = "ARTICLE", COUV = "LIVRE", OUV = "LIVRE", THESE = "THESE", HDR = "THESE", OTHER = "ARTICLE" }
+type_inconnu = "AUTRE"
+
+[normalisation.openalex]
+prefixe = "OAL"
+portail = "OPENALEX"
+fichier_restructure = "openalex_restructure.csv"
+types = { article = "ARTICLE", journal-article = "ARTICLE", book = "LIVRE", book-chapter = "LIVRE", dissertation = "THESE", report = "AUTRE", dataset = "AUTRE", grant = "AUTRE", standard = "AUTRE", other = "AUTRE", review = "AUTRE", preprint = "AUTRE", editorial = "AUTRE", letter = "AUTRE", erratum = "AUTRE", peer-review = "AUTRE", paratext = "AUTRE", book-series = "AUTRE", reference-entry = "AUTRE" }
+type_inconnu = "AUTRE"
+
+[normalisation.persee]
+prefixe = "PRS"
+portail = "PERSEE"
+fichier_restructure = "persee_restructure.csv"
+type_unique = "ARTICLE"
+
+[normalisation.sudoc]
+prefixe = "SUD"
+portail = "SUDOC"
+fichier_restructure = "sudoc_restructure.csv"
+# Le passage manuel par un tableur avait retiré les zéros initiaux des PPN dans id_portail.
+retirer_zeros_initiaux = true
+
+[normalisation.theses]
+prefixe = "THE"
+portail = "THESES"
+fichier_restructure = "theses_restructure.csv"
+type_unique = "THESE"
+retirer_zeros_initiaux = false
+
+[normalisation.frantiq]
+type_unique = "LIVRE"
+prefixe = "FRA"
+portail = "FRANTIQ"
+fichier_restructure = "frantiq_restructure.csv"
+retirer_zeros_initiaux = false
+
+# Colonnes des fichiers par paire de mots des portails terme à terme (règles
+# déduites des fichiers finaux : les fichiers par paire ne sont pas conservés).
+[normalisation.sudoc.colonnes]
+id_portail = "PPN"
+uri = "URL"
+auteurs = "Auteurs"
+titre = "Titre"
+resume = "Resume"
+date = "Annee"
+mots_cles = "Mots-cles"
+type = "Type"
+
+[normalisation.sudoc.types]
+article = "ARTICLE"
+book = "LIVRE"
+incollection = "LIVRE"
+phdthesis = "THESE"
+mastersthesis = "THESE"
+misc = ""
+
+[normalisation.theses.colonnes]
+id_portail = "nnt"
+uri = "url"
+auteurs = "auteur"
+titre = "titre"
+resume = "resume_fr"
+date = "annee"
+mots_cles = "mots_cles"
+
+[normalisation.frantiq.colonnes]
+id_portail = "Biblionumber"
+auteurs = "Auteurs"
+titre = "Titre"
+resume = "Resume"
+date = "Annee"
+mots_cles = "Mots-cles_PACTOLS"
+
+[normalisation.terme_a_terme]
+# Séparateur des auteurs dans les fichiers par paire ; « Nom, Prénom » devient « Nom Prénom ».
+separateurs_auteurs = { sudoc = " ; ", frantiq = " ; ", theses = "; " }
+separateur_fichier = ";"
+separateur_paire_fichier = "__x__"
+
+# Noms des fichiers par paire : « étiquette A__x__étiquette B » (SUDOC, Frantiq) ;
+# étiquette = mot avec des _ à la place des espaces, sauf ces exceptions.
+[mots_terme_a_terme.etiquettes_fichiers]
+"systeme information geographique" = "SIG_complet"
+sig = "SIG"
+bim = "BIM"
+"sig 3d" = "SIG_3D"
+"modele numerique de terrain" = "MNT_complet"
+mnt = "MNT"
+websig = "webSIG"
+
+# Envoi vers une bibliothèque Zotero (API v3).
+[zotero]
+url = "https://api.zotero.org"
+version_api = "3"
+notices_par_lot = 50
+longueur_max_etiquette = 255
+delai_secondes = 90
+tentatives_max = 5
+pause_entre_lots = 0.5
+pause_progressive_secondes = 3
+elements_par_page = 100
+mot_de_confirmation_purge = "SUPPRIMER"
+type_par_defaut = "document"
+champs_extra = ["id_biblio", "portail", "id_portail", "work_cluster_id", "nb_notices_cluster", "portails_src", "llm_confiance", "person_cluster_ids"]
+types_avec_doi = ["journalArticle", "conferencePaper"]
+particules = ["de", "du", "des", "le", "la", "van", "von", "der", "den", "di", "da", "dos", "del", "della", "el", "al", "ben", "bin"]
+
+[zotero.types]
+ARTICLE = "journalArticle"
+ARTICLE_REVUE = "journalArticle"
+COMM = "conferencePaper"
+COMMUNICATION = "conferencePaper"
+OUVRAGE = "book"
+BOOK = "book"
+CHAPITRE = "bookSection"
+COUV = "bookSection"
+THESE = "thesis"
+THESIS = "thesis"
+RAPPORT = "report"
+REPORT = "report"
+MEMOIRE = "thesis"

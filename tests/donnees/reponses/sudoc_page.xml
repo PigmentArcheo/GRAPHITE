@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<srw:searchRetrieveResponse xmlns:srw="http://www.loc.gov/zing/srw/">
+  <srw:numberOfRecords>1</srw:numberOfRecords>
+  <srw:records><srw:record><srw:recordData>
+    <record>
+      <controlfield tag="001">012345678</controlfield>
+      <datafield tag="200"><subfield code="a">Un SIG pour la fouille</subfield><subfield code="e">site fictif de Valombre</subfield></datafield>
+      <datafield tag="700"><subfield code="a">Durand</subfield><subfield code="b">Alice</subfield></datafield>
+      <datafield tag="210"><subfield code="d">2012</subfield><subfield code="c">Éditions fictives</subfield></datafield>
+      <datafield tag="606"><subfield code="a">Archéologie</subfield></datafield>
+      <datafield tag="010"><subfield code="a">978-0-00-000000-0</subfield></datafield>
+    </record>
+  </srw:recordData></srw:record></srw:records>
+</srw:searchRetrieveResponse>

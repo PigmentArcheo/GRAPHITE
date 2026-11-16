@@ -10,14 +10,14 @@ from conftest import DONNEES_TEST
 pytest.importorskip("rapidfuzz")
 pytest.importorskip("sklearn")
 
-from bibliosig.analyses.etape import executer as analyser  # noqa: E402
-from bibliosig.auteurs.etape import executer as regrouper_auteurs  # noqa: E402
-from bibliosig.classification.etape import executer as classer  # noqa: E402
-from bibliosig.dedoublonnage.etape import executer as dedoublonner  # noqa: E402
-from bibliosig.figures.etape import executer as dessiner  # noqa: E402
-from bibliosig.filtrage.etape import executer as filtrer  # noqa: E402
-from bibliosig.fusion.etape import executer as fusionner  # noqa: E402
-from bibliosig.graphe.etape import executer as construire_graphe  # noqa: E402
+from bibliosig.analyses.etape import executer as analyser
+from bibliosig.auteurs.etape import executer as regrouper_auteurs
+from bibliosig.classification.etape import executer as classer
+from bibliosig.dedoublonnage.etape import executer as dedoublonner
+from bibliosig.figures.etape import executer as dessiner
+from bibliosig.filtrage.etape import executer as filtrer
+from bibliosig.fusion.etape import executer as fusionner
+from bibliosig.graphe.etape import executer as construire_graphe
 
 
 def test_chaine_complete(configuration, chemins):

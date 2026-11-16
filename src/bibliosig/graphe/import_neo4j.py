@@ -58,11 +58,12 @@ def importer(configuration: Configuration, dossier_graphe: Path, mot_de_passe: s
     parametres = configuration.chaine["neo4j"]
     script = (dossier_graphe / "import.cypher").read_text(encoding="utf-8")
     liste = instructions(script)
-    with GraphDatabase.driver(
-        adresse_neo4j(configuration), auth=(parametres["utilisateur"], secret)
-    ) as pilote:
-        with pilote.session(database=parametres["base"]) as session:
-            for instruction in liste:
-                session.run(instruction).consume()
+    identifiants = (parametres["utilisateur"], secret)
+    with (
+        GraphDatabase.driver(adresse_neo4j(configuration), auth=identifiants) as pilote,
+        pilote.session(database=parametres["base"]) as session,
+    ):
+        for instruction in liste:
+            session.run(instruction).consume()
     journal.info("%d instructions Cypher exécutées", len(liste))
     return len(liste)

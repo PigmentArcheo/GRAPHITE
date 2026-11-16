@@ -5,11 +5,11 @@ import pytest
 
 pytest.importorskip("rapidfuzz")
 
-from bibliosig.auteurs.noms import cle_famille, cle_permutation, normaliser_forme  # noqa: E402
-from bibliosig.auteurs.regroupements import regrouper_precocement  # noqa: E402
-from bibliosig.dedoublonnage.identifiants import regrouper_par_identifiants  # noqa: E402
-from bibliosig.dedoublonnage.notices import preparer_notices  # noqa: E402
-from bibliosig.dedoublonnage.similarite import est_paire_compagnon, regrouper_par_similarite  # noqa: E402
+from bibliosig.auteurs.noms import cle_famille, cle_permutation, normaliser_forme
+from bibliosig.auteurs.regroupements import regrouper_precocement
+from bibliosig.dedoublonnage.identifiants import regrouper_par_identifiants
+from bibliosig.dedoublonnage.notices import preparer_notices
+from bibliosig.dedoublonnage.similarite import est_paire_compagnon, regrouper_par_similarite
 
 COLONNES = ["id_biblio", "portail", "DOI", "uri", "auteurs", "titre", "date"]
 

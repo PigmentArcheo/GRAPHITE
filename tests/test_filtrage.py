@@ -2,9 +2,8 @@
 
 import pandas as pd
 
-from bibliosig.classification.decisions import motif_prefiltre, prefiltrer
+from bibliosig.classification.decisions import Decision, motif_prefiltre, prefiltrer
 from bibliosig.classification.etape import destinations
-from bibliosig.classification.decisions import Decision
 from bibliosig.communs.tableaux import texte_avec_nan
 from bibliosig.filtrage.etape import masque_conservation_positive, masque_rejet_negatif
 

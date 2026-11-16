@@ -7,11 +7,11 @@ import re
 from pathlib import Path
 from typing import Any
 from urllib.parse import quote
-from defusedxml.ElementTree import ParseError
 
 import requests
 from bs4 import BeautifulSoup
 from defusedxml import DefusedXmlException
+from defusedxml.ElementTree import ParseError
 
 from bibliosig.collecte.couples import paires_de_mots
 from bibliosig.collecte.http import attendre, masquer_secrets, obtenir, ouvrir_session

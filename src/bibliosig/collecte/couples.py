@@ -102,7 +102,9 @@ def concept_par_mot(configuration: Configuration, cle_mots: str) -> dict[str, st
 
 
 def paires_de_mots(configuration: Configuration, plateforme: str) -> list[tuple[str, str]]:
-    """Les 19 × 14 paires de mots d'une plateforme terme à terme, dans l'ordre de la configuration (mots A, puis mots B).
+    """Les 19 × 14 paires de mots d'une plateforme terme à terme.
+
+    Les paires suivent l'ordre de la configuration : mots A, puis mots B.
 
     Paramètres
     ----------

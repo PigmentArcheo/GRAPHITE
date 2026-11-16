@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 import unicodedata
 from collections.abc import Iterable
-from functools import lru_cache
+from functools import cache
 
 REMPLACEMENTS_TYPOGRAPHIQUES = {
     "‐": "-",
@@ -44,7 +44,7 @@ def normaliser_unicode(forme: str) -> str:
     return re.sub(r"\s+", " ", texte).strip()
 
 
-@lru_cache(maxsize=None)
+@cache
 def normaliser_forme(forme: str) -> str:
     """Forme de nom normalisée et en minuscules, base des comparaisons.
 
@@ -103,7 +103,7 @@ def identifiant_depuis_forme(forme: str, longueur: int) -> str:
     return f"pc_{texte}"
 
 
-@lru_cache(maxsize=None)
+@cache
 def cle_permutation(forme: str) -> str:
     """Mots de la forme normalisée, triés : même clé pour « Nom Prénom » et « Prénom Nom ».
 

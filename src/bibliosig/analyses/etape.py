@@ -5,12 +5,6 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from bibliosig.analyses.publications import (
-    co_occurrences_concepts,
-    notices_par_portail_et_annee,
-    oeuvres_par_annee,
-    oeuvres_par_concept_et_annee,
-)
 from bibliosig.analyses.concepts_et_coauteurs import (
     chiffres_coauteurs,
     chiffres_mots_cles,
@@ -22,6 +16,12 @@ from bibliosig.analyses.concepts_et_coauteurs import (
 )
 from bibliosig.analyses.graphe_csv import lire_graphe
 from bibliosig.analyses.mots_titres import co_occurrences_titres
+from bibliosig.analyses.publications import (
+    co_occurrences_concepts,
+    notices_par_portail_et_annee,
+    oeuvres_par_annee,
+    oeuvres_par_concept_et_annee,
+)
 from bibliosig.communs.tableaux import ecrire_csv, ecrire_json
 from bibliosig.configuration import Chemins, Configuration
 

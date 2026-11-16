@@ -106,7 +106,9 @@ def construire_analyseur() -> argparse.ArgumentParser:
     auteurs.add_argument("--sans-llm", action="store_true")
     auteurs.add_argument("--limite-familles", type=int, default=None)
 
-    analyses = sous.add_parser("analyses", add_help=False, help="tableaux et indicateurs des publications, concepts et co-auteurs")
+    analyses = sous.add_parser(
+        "analyses", add_help=False, help="tableaux et indicateurs des publications, concepts et co-auteurs"
+    )
     ajouter_options_communes(analyses)
     analyses.add_argument(
         "--expressions-protegees",

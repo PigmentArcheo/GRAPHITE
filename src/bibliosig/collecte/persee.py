@@ -7,10 +7,10 @@ import logging
 import re
 import tarfile
 import unicodedata
-from xml.sax import SAXException
 from collections.abc import Iterable
 from pathlib import Path
 from typing import Any
+from xml.sax import SAXException
 
 import requests
 
@@ -389,7 +389,8 @@ def rechercher(configuration: Configuration, dossier: Path) -> dict[str, Any]:
             for rang, document in enumerate(trouves, start=1):
                 termes_a, champs_a = termes_et_champs(document, concept_a.termes)
                 termes_b, champs_b = termes_et_champs(document, concept_b.termes)
-                champs = " | ".join(sorted(set(f"{champs_a} | {champs_b}".split(" | ")))).strip(" | ")
+                champs_reunis = " | ".join(sorted(set(f"{champs_a} | {champs_b}".split(" | "))))
+                champs = re.sub(r"^[ |]+|[ |]+$", "", champs_reunis)
                 ecrivain.writerow(
                     {
                         "groupe_A": concept_a.libelle,

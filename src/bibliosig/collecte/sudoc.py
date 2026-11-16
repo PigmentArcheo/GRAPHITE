@@ -5,10 +5,10 @@ from __future__ import annotations
 import logging
 from pathlib import Path
 from typing import Any
-from defusedxml.ElementTree import ParseError
 
 import requests
 from defusedxml import DefusedXmlException
+from defusedxml.ElementTree import ParseError
 
 from bibliosig.collecte.couples import paires_de_mots
 from bibliosig.collecte.http import attendre, masquer_secrets, obtenir, ouvrir_session

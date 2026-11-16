@@ -12,14 +12,17 @@ from bibliosig.analyses.graphe_csv import GrapheTables
 
 
 class DecoupeurTitres:
-    """Découpe un titre en mots normalisés, selon une suite fixe d'étapes (accents, ponctuation, expressions, pluriels).
+    """Découpe un titre en mots normalisés, selon une suite fixe d'étapes.
+
+    Les étapes portent sur les accents, la ponctuation, les expressions et les pluriels.
 
     Paramètres
     ----------
     parametres : dict
         Section ``[mots_titres]``.
     expressions_protegees : bool
-        Ajoute les synonymes de SIG et d'analyse spatiale (pluriels, autres langues) avant les expressions des méthodes.
+        Ajoute les synonymes de SIG et d'analyse spatiale (pluriels, autres langues)
+        avant les expressions des méthodes.
     """
 
     def __init__(self, parametres: dict[str, Any], expressions_protegees: bool) -> None:
